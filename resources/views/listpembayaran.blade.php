@@ -33,7 +33,7 @@
         <tbody>
         @foreach($getall as $getpemb)
           <tr align="center">
-            <td>{{ $getpemb->id }}</td>
+            <td><a href="{{url('/pembayaran/'.$getpemb->id.'/konfirmasi')}}">{{ $getpemb->id }}</a></td>
             <td>{{ $getpemb->no_polis }} ({{ $getpemb->njenis }})</td>
             <td>{{ $getpemb->bulan }}</td>
             <td>Rp. {{ number_format($getpemb->total) }}</td>

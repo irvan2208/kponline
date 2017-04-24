@@ -3,7 +3,7 @@
 @section('content')
 <div class="register-box">
   <div class="register-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="{{ url('/') }}"><b>Parkir</b>UIB</a>
   </div>
 <div class="register-box-body">
 <p class="login-box-msg">Register a new membership</p>
@@ -11,8 +11,8 @@
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('npm') ? ' has-error' : '' }} has-feedback">
-                    <input placeholder="Nomor Pokok Mahasiswa"  id="npm" type="text" class="form-control" data-inputmask="'mask': ['99-99-999']" data-mask="data-mask" value="{{ old('npm') }}"  required autofocus>
-                    <input placeholder="Nomor Pokok Mahasiswa"  id="npmhide" type="hidden" class="form-control" name="npm" value="{{ old('npm') }}"  required autofocus>
+                    <input placeholder="Nomor Pokok Mahasiswa"  id="npm" type="text" class="form-control" data-inputmask="'mask': ['99-99-999']" data-mask="data-mask" value="{{ old('npm') }}"  required>
+                    <input placeholder="Nomor Pokok Mahasiswa"  id="npmhide" type="hidden" class="form-control" name="npm" value="{{ old('npm') }}"  required>
 
 
                     @if ($errors->has('npm'))

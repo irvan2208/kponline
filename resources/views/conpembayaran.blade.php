@@ -64,7 +64,7 @@
                               @if($gettrans->paid == 1)
                                     {{$gettrans->atas_nama}}
                               @else
-                              {{ Form::text('namatrans', '', array('class' => 'form-control')) }}
+                              {{ Form::text('namatrans', '', array('class' => 'form-control','required'=>'required')) }}
                               @endif
                               </td>
                         </tr>
@@ -120,7 +120,7 @@
         <h4 class="modal-title">Bukti Pembayaran {{ $gettrans->noper }}</h4>
       </div>
       <div class="modal-body">
-        <img width="100%" height="450" src="{{ url('/') }}/{{ $gettrans->image }}">
+        <img width="100%" height="450" src="{{ asset($gettrans->image) }}">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -4,7 +4,7 @@
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Parkiran </b>UIB</a>
+        <a href="{{ url('/') }}"><b>Parkiran </b>UIB</a>
       </div>
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>

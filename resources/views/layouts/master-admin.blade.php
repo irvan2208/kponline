@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>@yield('title')</title>
+  <title>Parkiran @yield('title')</title>
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -174,7 +174,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="pull-left info">
           <p>{{ Auth::user()->nama }}</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
         </div>
       </div>
 
@@ -285,6 +285,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       "searching": false,
       "ordering": true,
       "info": true,
+      "responsive": true,
       "autoWidth": false
     });
   });

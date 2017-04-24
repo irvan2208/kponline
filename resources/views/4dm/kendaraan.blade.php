@@ -86,7 +86,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Jenis Kendaraan</th>
+			<th>Nomor Kendaraan</th>
 			<td>{{ Form::text('no_polis', '', array('class' => 'form-control', 'placeholder' => 'BP1234AA')) }}</td>
 		</tr>
 		<tr>

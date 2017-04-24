@@ -88,9 +88,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
 
-          <!-- Notifications Menu -->
+          <!-- Notifications Menu
           <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
@@ -98,20 +97,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="dropdown-menu">
               <li class="header">You have 10 notifications</li>
               <li>
-                <!-- Inner Menu: contains the notifications -->
+                Inner Menu: contains the notifications
                 <ul class="menu">
-                  <li><!-- start notification -->
+                  <li>
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
                   </li>
-                  <!-- end notification -->
                 </ul>
               </li>
               <li class="footer"><a href="#">View all</a></li>
             </ul>
           </li>
-          <!-- User Account Menu -->
+           User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -131,7 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
+              <!-- <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     <a href="#">Followers</a>
@@ -143,12 +141,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="#">Friends</a>
                   </div>
                 </div>
-                <!-- /.row -->
-              </li>
+              </li> -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ route('kendaraan') }}" class="btn btn-default btn-flat">Profil</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -179,7 +176,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="pull-left info">
           <p>{{ Auth::user()->nama }}</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
         </div>
       </div>
 
@@ -201,8 +198,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{url('/kendaraan')}}"><i class="fa fa-link"></i> <span>Profil & kendaraan</span></a></li>
         <li class="header">Member Parkir</li>
-        <li><a href="{{url('/pembayaran/baru')}}">Perpanjang Kendaraan</a></li>
-        <li><a href="{{url('/pembayaran/konfirmasi')}}">Konfirmasi Pembayaran</a></li>
+        <li><a href="{{url('/pembayaran/baru')}}"><i class="fa fa-link"></i> <span>Perpanjang Kendaraan</span></a></li>
+        <li><a href="{{url('/pembayaran/konfirmasi')}}"><i class="fa fa-link"></i> <span>Konfirmasi Pembayaran</span></a></li>
         
       </ul>
       <!-- /.sidebar-menu -->
