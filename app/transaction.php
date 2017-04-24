@@ -10,3 +10,4 @@ class transaction extends Model
 	protected $table = 'transaction';
 	public $timestamps = true;
 }
+//
