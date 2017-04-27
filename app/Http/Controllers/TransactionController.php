@@ -200,7 +200,13 @@ class TransactionController extends Controller
         ->orderBy('transaction.expired_at','DESC')
         ->get();
 
-        return view('4dm/perpanjangan',['getall'=>$getall,]);
+        $countpengguna = users::count()-1;
+        $countsysmtr = sys::where('jenis',2)->count();
+        $countsysmbl = sys::where('jenis',1)->count();
+        $counttransaction = transaction::where('paid',1)->count();
+        //dd($countpengguna);
+
+        return view('4dm/perpanjangan',['getall'=>$getall,])->with(compact('countpengguna','counttransaction','countsysmtr','countsysmbl'));
     }
 
     public function confpaid(request $request, $id)

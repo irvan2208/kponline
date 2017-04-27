@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Parkir UIB Login')
 @section('content')
 
 <div class="login-box">
@@ -7,20 +7,21 @@
         <a href="{{ url('/') }}"><b>Parkiran </b>UIB</a>
       </div>
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Login Dengan Data Portal</p> 
         <form role="form" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Your Email" required autofocus>
+                <input id="email" type="text" class="form-control" name="login" value="{{ old('login') }}" placeholder="Masukkan NPM" autofocus required> 
+                <!-- <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Your Email" required autofocus> --> 
 
-                @if ($errors->has('email'))
+                @if ($errors->has('email') or $errors->has('username'))
                     <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
                     </span>
                 @endif
 
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
 
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
@@ -52,9 +53,6 @@
                 </div>
             </div>
         </form>
-
-        <a href="{{ route('password.request') }}">Forgot Your Password?</a><br>
-        <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
         
     </div>
 </div>

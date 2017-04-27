@@ -4,6 +4,7 @@ namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\users;
 
 trait AuthenticatesUsers
 {
@@ -84,7 +85,12 @@ trait AuthenticatesUsers
      */
     protected function credentials(Request $request)
     {
-        return $request->only($this->username(), 'password');
+        $field = filter_var($request->input($this->username()), FILTER_VALIDATE_EMAIL) ? 'email' : 'npm';
+        $request->merge([$field => $request->input($this->username())]);
+        //dd($request);
+        return $request->only($field, 'password');
+
+        //return $request->only($this->username(), 'password');
     }
 
     /**
@@ -112,7 +118,11 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //
+        if ( Auth::check() && Auth::user()->isAdmin() ){
+            return redirect('/admin/perpanjangan');
+        }else{
+            return redirect('/home');
+        }
     }
 
     /**
@@ -123,15 +133,58 @@ trait AuthenticatesUsers
      */
     protected function sendFailedLoginResponse(Request $request)
     {
+        //dd($request);
         $errors = [$this->username() => trans('auth.failed')];
+        if($errors){
+            $data = array("username" => $request->npm, "password" => $request->password);      
+            $data_string = json_encode($data);                                   
+            $ch = curl_init('http://apps.uib.ac.id/portal/api/v1/login');        
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                     
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                  
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data_string))
+            );
+            $result = curl_exec($ch);
+            $result = json_decode($result, true);
+            if(isset($result['code'])){
+                $kode = 400;
+            }else{
+                $kode = 1;
+            }
 
+            if($kode == 400)
+            {
+                return redirect()->back()
+                ->withInput($request->only($this->username(), 'remember'))
+                ->withErrors($errors);
+            }elseif($kode == 1){
+                //dd($result);
+
+                if ($result['gender'] == 'L') {
+                    $jk = 'm';
+                }else{
+                    $jk = 'f';
+                }
+                $pass = bcrypt($request->password);
+                $users = new users;
+                $users->npm = $result['id'];
+                $users->nama = $result['name'];
+                $users->jk = $jk;
+                $users->prodi = $result['majorCode'];
+                $users->email = null;
+                $users->phone = $result['phone'];
+                $users->password = $pass;
+                $users->save();
+
+                Auth::loginUsingId($result['id'],true);
+                return redirect('kendaraan');//
+            }
+        }
         if ($request->expectsJson()) {
             return response()->json($errors, 422);
         }
-
-        return redirect()->back()
-            ->withInput($request->only($this->username(), 'remember'))
-            ->withErrors($errors);
     }
 
     /**
@@ -139,9 +192,9 @@ trait AuthenticatesUsers
      *
      * @return string
      */
-    public function username()
+   public function username()
     {
-        return 'email';
+        return 'login';
     }
 
     /**

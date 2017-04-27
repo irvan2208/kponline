@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('kendaraan');
-})->middleware('auth');
+Route::get('/','UserController@ceklogin')->middleware('auth');
 
 Route::get('index', function () {
     return view('index');
@@ -24,7 +22,7 @@ Route::get('index', function () {
 // });
 
 Route::get('admin/users/create','UserController@showprodi')->middleware('auth','admin');
-Route::get('admin/perpanjangan', 'TransactionController@perpanjanganlist')->middleware('auth','admin');
+Route::get('admin/perpanjangan', 'TransactionController@perpanjanganlist')->name('admperpanjang')->middleware('auth','admin');
 Route::get('admin/users','UserController@showuser')->middleware('auth','admin','admin');
 Route::get('admin/users/{npm}/edit','UserController@edit')->middleware('auth','admin');
 Route::put('admin/users/{npm}','UserController@update')->middleware('auth','admin');
@@ -33,6 +31,8 @@ Route::post('admin/users','UserController@store')->middleware('auth','admin');
 Route::put('admin/perpanjangan/{id}/konfirmasi','TransactionController@confpaid')->middleware('auth','admin');
 Route::post('admin/kendaraan/tambah','kendaraan@admstoretambah')->middleware('auth');
 Route::delete('admin/kendaraan/{nopol}/del','kendaraan@admhapus')->middleware('auth','admin');
+Route::get('pembayaran/laporan','laporan@pembayaran')->name('pembayaran/laporan')->middleware('auth','admin');
+Route::get('perpanjang/laporan','laporan@perpanjangan')->name('pembayaran/laporan')->middleware('auth','admin');
 
 
 

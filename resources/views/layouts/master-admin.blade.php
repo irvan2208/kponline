@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Parkiran @yield('title')</title>
+  <title>@yield('title')</title>
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -23,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ url('/') }}/plugins/select2/select2.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ url('/') }}/plugins/datatables/dataTables.bootstrap.css">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
   <!-- PACE -->
   <link rel="stylesheet" href="{{ url('/') }}/plugins/pace/pace.min.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -209,6 +209,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <span>Daftar Kendaraan</span>
             </a>
           </li>
+          <li class="header">Laporan</li>
+          <li><a href="{{url('/perpanjang/laporan')}}"><i class="fa fa-link"></i> <span>Perpanjangan</span></a></li>
+          <li><a href="{{url('/pembayaran/laporan')}}"><i class="fa fa-link"></i> <span>Pembayaran</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -263,6 +266,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- DataTables -->
 <script src="{{ url('/') }}/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="{{ url('/') }}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <!-- Select2 -->
 <script src="{{ url('/') }}/plugins/select2/select2.full.min.js"></script>
 <!-- PACE -->

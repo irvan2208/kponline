@@ -141,7 +141,7 @@
 		          <tr>
 		            <th>No Polis</th>
 		            <th>Jenis</th>
-		            <th>Option</th>
+		            <th>Terdaftar Tanggal</th> 
 		          </tr>
 		        </thead>
 		        <tbody>
@@ -149,11 +149,7 @@
 		        		<tr>
 		        			<td>{{$listkendaraan->no_polis}}</td>
 		        			<td>{{$listkendaraan->njenis}}</td>
-		        			{{ Form::open(array('url' => 'kendaraan/'.$listkendaraan->no_polis.'/del','id'=>'delform')) }}
-			        			{{ method_field('DELETE') }}
-			        				<td>{{Form::submit('Hapus',array('class'=>'btn btn-primary btn-warning'))}}</td>
-			        			{{ csrf_field() }}
-	   						{{ Form::close() }}
+		        			<td>{{ date('d-m-Y',strtotime(str_replace('-','/', $listkendaraan->created_at)))}}</td>
 		        		</tr>
 		        	@endforeach
 		        </tbody>

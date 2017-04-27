@@ -11,6 +11,17 @@ use Auth;
 
 class UserController extends Controller
 {
+    public function ceklogin()
+    {
+        $loguser = Auth::user();
+
+        if($loguser->isAdmin == 1){
+            return redirect()->route('admperpanjang');
+        }else{
+            return redirect()->route('kendaraan');
+        }
+    }
+    
     public function showprodi()
     {
         $prodi = DB::table('prodi')->pluck('nama', 'id');
